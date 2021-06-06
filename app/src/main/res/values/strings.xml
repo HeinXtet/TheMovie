@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TMDB</string>
+    <string name="common_error_title">Oops</string>
+    <string name="common_error_message">Fail to fetch data.Please try again.</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    <string name="text_now_playing_movies">Now Playing Movies</string>
+    <string name="text_over_view">Overview</string>
+    <string name="text_production_company">Production Companies</string>
+    <string name="text_cast_title">Full Casts</string>
+    <string-array name="movie_types">
+        <item>Now Playing Movies</item>
+        <item>Popular Movies</item>
+        <item>Upcoming Movies</item>
+    </string-array>
+</resources>
