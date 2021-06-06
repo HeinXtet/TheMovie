@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.afollestad.materialdialogs.MaterialDialog
 import com.deevvdd.tmdb.R
 import com.deevvdd.tmdb.base.BaseFragment
 import com.deevvdd.tmdb.databinding.FragmentMovieDetailBinding
@@ -24,6 +25,28 @@ class MovieDetailFragment : BaseFragment<DetailViewModel, DetailEvent>() {
 
     override fun getOrCreateViewModel() = viewModel
     override fun renderEvent(event: DetailEvent) {
+        when (event) {
+            is DetailEvent.ErrorFetchingMovie -> {
+                MaterialDialog(requireContext()).show {
+                    title(R.string.common_error_title)
+                    message(text = event.errorMessage)
+                    positiveButton(R.string.retry) {
+                        it.dismiss()
+                        viewModel.getMovieDetails(args.movieId)
+                    }
+                }
+            }
+            is DetailEvent.ErrorFetchingMovieCredit -> {
+                MaterialDialog(requireContext()).show {
+                    title(R.string.common_error_title)
+                    message(text = event.errorMessage)
+                    positiveButton(R.string.retry) {
+                        it.dismiss()
+                        viewModel.getMovieCredits(args.movieId)
+                    }
+                }
+            }
+        }
     }
 
     override fun onCreateView(

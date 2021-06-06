@@ -30,7 +30,7 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun providePokemonDao(appDatabase: AppDatabase): MovieDao {
+    fun provideMovieDao(appDatabase: AppDatabase): MovieDao {
         return appDatabase.movieDao()
     }
 }
